@@ -17,10 +17,16 @@ int main(void){
     printf("Ciphertext : ");
     for(int i = 0; i < strlen(plaintext); i++){
         if(isupper(plaintext[i])){
-            printf("%c", (plaintext[i] - 65 + cipher) % 26 + 65);
+            /* ('A' = 0, 'B' = 1, etc) by subtracting 65(the ASCII value of 'A')
+               The cipher is then applied, and the result is converted back to a character by adding 65.
+            */
+            printf("%c", (plaintext[i] - 'A' + cipher) % 26 + 'A');
         }
         else if(islower(plaintext[i])){
-            printf("%c", (plaintext[i] - 97 + cipher) % 26 + 97);
+            /* ('a' = 0, 'b' = 1, etc) by subtracts 97 (the ASCII value of 'a'), applies the cipher, 
+               and adds 97 to convert back to a character.
+            */
+            printf("%c", (plaintext[i] - 'a' + cipher) % 26 + 'a');
         }
         else{
             printf("%c", plaintext[i]);
